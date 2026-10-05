@@ -1,0 +1,13 @@
+services:
+  speedtest:
+    build: ..
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      ALLOWED_ORIGINS: "${ALLOWED_ORIGINS:-*}"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "2"

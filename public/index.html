@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafbf9">
+  <title>连接 / 游戏服务器测速</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><a class="brand" href="./"><span class="brand-icon" aria-hidden="true">↗</span> 连接<span class="brand-en"> / CONNECTION</span></a><span class="server-state" id="connection-state"><i></i>尚未连接</span></header>
+    <section class="intro"><p class="eyebrow">GAME SERVER · NETWORK TEST</p><h1><span>你的网络，</span><wbr><span>到服务器。</span></h1><p class="subtitle">每一次连接，都有据可循。</p></section>
+    <form id="server-form" class="endpoint"><label for="server-url">测速服务器</label><div class="endpoint-entry"><input id="server-url" type="url" placeholder="https://speed.example.com" autocomplete="url" spellcheck="false" required aria-describedby="status"><button id="start-button" type="submit"><span aria-hidden="true">↗</span> 开始测速</button><button id="stop-button" type="button" hidden><span aria-hidden="true">■</span> 停止</button></div></form>
+    <div class="status-row"><p id="status" role="status" aria-live="polite">等待开始</p><span id="elapsed">预计 20 秒</span></div>
+    <div class="progress-track" aria-hidden="true"><div id="progress"></div></div>
+    <section class="metrics" aria-label="测速结果">
+      <div class="metric"><div class="metric-label"><span class="metric-icon" aria-hidden="true">↓</span> 下载速度</div><div class="reading"><strong id="download">--</strong><span>Mbps</span></div><p>DOWNLOAD</p></div>
+      <div class="metric"><div class="metric-label"><span class="metric-icon" aria-hidden="true">↑</span> 上传速度</div><div class="reading"><strong id="upload">--</strong><span>Mbps</span></div><p>UPLOAD</p></div>
+      <div class="metric"><div class="metric-label"><span class="metric-icon" aria-hidden="true">↔</span> Ping 延迟</div><div class="reading"><strong id="ping">--</strong><span>ms</span></div><p>HTTP ROUND TRIP</p></div>
+    </section>
+    <section class="trace" aria-label="网络实时曲线"><div class="trace-heading"><span id="chart-label">网络采样</span><span id="jitter">抖动 -- ms</span></div><canvas id="chart" aria-label="测速采样曲线"></canvas><div class="trace-foot"><span id="transfer">已传输 0 MB</span><span id="tested-at">尚无测试记录</span></div></section>
+    <section class="details" aria-label="当前网络与时间"><div><span class="detail-label">公网 IPv4</span><span id="ipv4" class="detail-value address">正在获取…</span></div><div><span class="detail-label">公网 IPv6</span><span id="ipv6" class="detail-value address">正在获取…</span></div><div><span class="detail-label">系统时间</span><time id="local-time" class="detail-value"></time></div><div><span class="detail-label">时区</span><span id="timezone" class="detail-value"></span></div></section>
+    <footer><span>直连测试 · HTTP 延迟</span><span id="server-clock">服务器时间 --</span></footer>
+  </main>
+</body>
+</html>

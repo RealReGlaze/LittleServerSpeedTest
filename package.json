@@ -1,0 +1,12 @@
+{
+  "name": "little-server-speed-test",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.mjs",
+    "test": "node --test",
+    "check": "node --check public/app.js && node --check server/server.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
